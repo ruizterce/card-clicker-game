@@ -11,6 +11,15 @@ export default function GameCard({ id, onClick }) {
       setLoading(true);
       setError(null);
 
+      // Check localStorage for cached data
+      const cachedData = localStorage.getItem(`pokemon-${id}`);
+      if (cachedData) {
+        setPokemon(JSON.parse(cachedData));
+        setLoading(false);
+        return;
+      }
+
+      // Fetch data from API if not cached
       try {
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon-form/${id}`
@@ -19,6 +28,8 @@ export default function GameCard({ id, onClick }) {
           throw new Error("Network response from pokeapi.co failed");
         }
         const data = await response.json();
+        // Cache the data in localStorage
+        localStorage.setItem(`pokemon-${id}`, JSON.stringify(data));
         setPokemon(data);
       } catch (error) {
         setError(error);
