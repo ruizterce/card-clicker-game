@@ -35,13 +35,16 @@ export default function Gameboard({ number }) {
     shuffleList();
   }
 
+  // Game Over
   const [gameOver, setgameOver] = useState(false);
 
-  console.log(clickedCards);
+  // Score
+  const score = clickedCards.length;
 
   if (!gameOver) {
     return (
       <>
+        <>Score: {score}</>
         {itemIdList.map((item) => (
           <GameCard
             key={`item_${item}`}
@@ -53,6 +56,11 @@ export default function Gameboard({ number }) {
       </>
     );
   } else {
-    return <>Game Over</>;
+    return (
+      <>
+        <p>Game Over</p>
+        <p>Score: {score}</p>
+      </>
+    );
   }
 }
