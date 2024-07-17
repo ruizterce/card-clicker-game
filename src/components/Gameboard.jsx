@@ -26,25 +26,37 @@ export default function Gameboard({ number }) {
   // Register clicked cards
   const [clickedCards, setClickedCards] = useState([]);
 
-  // Handle card click
-  function handleCardClick(id) {
-    const prevClickedCards = clickedCards;
-    prevClickedCards.includes(id)
-      ? setgameOver(true)
-      : setClickedCards([...prevClickedCards, id]);
-    shuffleList();
-  }
-
   // Game Over
-  const [gameOver, setgameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   // Score
   const score = clickedCards.length;
 
+  // High Score
+  const [highScore, setHighScore] = useState(
+    parseInt(localStorage.getItem("highScore")) || 0
+  );
+
+  // Handle card click
+  function handleCardClick(id) {
+    const prevClickedCards = clickedCards;
+    if (prevClickedCards.includes(id)) {
+      setGameOver(true);
+      if (score > highScore) {
+        setHighScore(score);
+        localStorage.setItem("highScore", score);
+      }
+    } else {
+      setClickedCards([...prevClickedCards, id]);
+      shuffleList();
+    }
+  }
+
   if (!gameOver) {
     return (
       <>
-        <>Score: {score}</>
+        <p>Score: {score}</p>
+        <p>High Score: {highScore}</p>
         {itemIdList.map((item) => (
           <GameCard
             key={`item_${item}`}
@@ -60,6 +72,7 @@ export default function Gameboard({ number }) {
       <>
         <p>Game Over</p>
         <p>Score: {score}</p>
+        <p>High Score: {highScore}</p>
       </>
     );
   }
