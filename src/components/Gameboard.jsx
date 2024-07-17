@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import GameCard from "./GameCard";
 
-export default function Gameboard({ number }) {
+export default function Gameboard({ number, onGameOver, onScoreChange }) {
   // Generate a random list of {count} unique IDs between {min} and {max}
   function generateIdList(count, min, max) {
-    let itemIdList = [];
+    const itemIdList = [];
     while (itemIdList.length < count) {
-      let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
       if (!itemIdList.includes(randomNumber)) {
         itemIdList.push(randomNumber);
       }
@@ -14,7 +14,7 @@ export default function Gameboard({ number }) {
     return itemIdList;
   }
 
-  // Generate a random list of {number} 1st generation Pokemon IDs(1-151)
+  // Generate a random list of {number} 1st generation Pokemon IDs (1-151)
   const [itemIdList, setItemIdList] = useState(generateIdList(number, 1, 151));
 
   // Shuffle itemIdList list order
@@ -26,54 +26,28 @@ export default function Gameboard({ number }) {
   // Register clicked cards
   const [clickedCards, setClickedCards] = useState([]);
 
-  // Game Over
-  const [gameOver, setGameOver] = useState(false);
-
-  // Score
-  const score = clickedCards.length;
-
-  // High Score
-  const [highScore, setHighScore] = useState(
-    parseInt(localStorage.getItem("highScore")) || 0
-  );
-
   // Handle card click
   function handleCardClick(id) {
-    const prevClickedCards = clickedCards;
-    if (prevClickedCards.includes(id)) {
-      setGameOver(true);
-      if (score > highScore) {
-        setHighScore(score);
-        localStorage.setItem("highScore", score);
-      }
+    if (clickedCards.includes(id)) {
+      onGameOver();
     } else {
-      setClickedCards([...prevClickedCards, id]);
+      const newClickedCards = [...clickedCards, id];
+      setClickedCards(newClickedCards);
+      onScoreChange(newClickedCards.length);
       shuffleList();
     }
   }
 
-  if (!gameOver) {
-    return (
-      <>
-        <p>Score: {score}</p>
-        <p>High Score: {highScore}</p>
-        {itemIdList.map((item) => (
-          <GameCard
-            key={`item_${item}`}
-            id={item}
-            onClick={() => handleCardClick(item)}
-            clicked={clickedCards.includes(item)}
-          />
-        ))}
-      </>
-    );
-  } else {
-    return (
-      <>
-        <p>Game Over</p>
-        <p>Score: {score}</p>
-        <p>High Score: {highScore}</p>
-      </>
-    );
-  }
+  return (
+    <>
+      {itemIdList.map((item) => (
+        <GameCard
+          key={`item_${item}`}
+          id={item}
+          onClick={() => handleCardClick(item)}
+          clicked={clickedCards.includes(item)}
+        />
+      ))}
+    </>
+  );
 }
