@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function GameCard({ id, onClick }) {
+export default function GameCard({ id, onClick, clicked }) {
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

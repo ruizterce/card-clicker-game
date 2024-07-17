@@ -23,11 +23,36 @@ export default function Gameboard({ number }) {
     setItemIdList(shuffledList);
   }
 
-  return (
-    <>
-      {itemIdList.map((item) => (
-        <GameCard key={`item_${item}`} id={item} onClick={shuffleList} />
-      ))}
-    </>
-  );
+  // Register clicked cards
+  const [clickedCards, setClickedCards] = useState([]);
+
+  // Handle card click
+  function handleCardClick(id) {
+    const prevClickedCards = clickedCards;
+    prevClickedCards.includes(id)
+      ? setgameOver(true)
+      : setClickedCards([...prevClickedCards, id]);
+    shuffleList();
+  }
+
+  const [gameOver, setgameOver] = useState(false);
+
+  console.log(clickedCards);
+
+  if (!gameOver) {
+    return (
+      <>
+        {itemIdList.map((item) => (
+          <GameCard
+            key={`item_${item}`}
+            id={item}
+            onClick={() => handleCardClick(item)}
+            clicked={clickedCards.includes(item)}
+          />
+        ))}
+      </>
+    );
+  } else {
+    return <>Game Over</>;
+  }
 }
