@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/Scoreboard.css";
 
 export default function Scoreboard({ score, gameOver }) {
   const [highScore, setHighScore] = useState(0);
@@ -18,10 +19,19 @@ export default function Scoreboard({ score, gameOver }) {
   }, [gameOver, score, highScore]);
 
   return (
-    <div>
-      <p>Score: {score}</p>
-      <p>High Score: {highScore}</p>
-      {gameOver && <p>Game Over</p>}
+    <div className="scoreboard">
+      {gameOver ? (
+        <div>Game Over! You clicked twice on the same Pokemon.</div>
+      ) : (
+        <div>Click on each Pokemon only once!</div>
+      )}
+      <div>
+        Score: <span>{score}</span>
+      </div>
+
+      <div>
+        High Score: <span>{highScore}</span>
+      </div>
     </div>
   );
 }
