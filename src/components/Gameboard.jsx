@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GameCard from "./GameCard";
+import "../styles/Gameboard.css";
 
 export default function Gameboard({ number, onGameOver, onScoreChange }) {
   // Generate a random list of {count} unique IDs between {min} and {max}
@@ -39,7 +40,7 @@ export default function Gameboard({ number, onGameOver, onScoreChange }) {
   }
 
   return (
-    <>
+    <div className="gameboard">
       {itemIdList.map((item) => (
         <GameCard
           key={`item_${item}`}
@@ -48,6 +49,6 @@ export default function Gameboard({ number, onGameOver, onScoreChange }) {
           clicked={clickedCards.includes(item)}
         />
       ))}
-    </>
+    </div>
   );
 }
