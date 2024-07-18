@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/GameCard.css";
 
-export default function GameCard({ id, onClick, clicked }) {
+export default function GameCard({ id, onClick, clicked, gameOver }) {
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -76,13 +76,17 @@ export default function GameCard({ id, onClick, clicked }) {
     fairy: "#D685AD",
   };
 
+  const borderStyle = gameOver && clicked ? "2px solid green" : "none";
+
+  console.log("clicked:" + clicked);
   return (
     <div
-      className="game-card"
+      className={`game-card ${gameOver ? "game-over" : ""}`}
       onClick={onClick}
       style={{
         cursor: "pointer",
         backgroundColor: typeColours[pokemon.types[0].type.name],
+        border: borderStyle,
       }}
     >
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />

@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GameCard from "./GameCard";
 import "../styles/Gameboard.css";
 
-export default function Gameboard({ number, onGameOver, onScoreChange }) {
+export default function Gameboard({
+  number,
+  onGameOver,
+  onScoreChange,
+  gameOver,
+}) {
   // Generate a random list of {count} unique IDs between {min} and {max}
   function generateIdList(count, min, max) {
     const itemIdList = [];
@@ -39,6 +44,14 @@ export default function Gameboard({ number, onGameOver, onScoreChange }) {
     }
   }
 
+  // Reset itemIdList and clickedCards when gameOver changes to false
+  useEffect(() => {
+    if (!gameOver) {
+      setItemIdList(generateIdList(number, 1, 151));
+      setClickedCards([]);
+    }
+  }, [gameOver, number]);
+
   return (
     <div className="gameboard">
       {itemIdList.map((item) => (
@@ -47,6 +60,7 @@ export default function Gameboard({ number, onGameOver, onScoreChange }) {
           id={item}
           onClick={() => handleCardClick(item)}
           clicked={clickedCards.includes(item)}
+          gameOver={gameOver}
         />
       ))}
     </div>

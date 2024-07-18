@@ -26,15 +26,14 @@ function App() {
   return (
     <>
       <Scoreboard score={score} gameOver={gameOver} />
-      {gameOver ? (
-        <button onClick={resetGame}>Play Again</button>
-      ) : (
-        <Gameboard
-          number="5"
-          onGameOver={handleGameOver}
-          onScoreChange={handleScoreChange}
-        />
-      )}
+      {gameOver ? <button onClick={resetGame}>Play Again</button> : null}
+
+      <Gameboard
+        number="5"
+        onGameOver={handleGameOver}
+        onScoreChange={handleScoreChange}
+        gameOver={gameOver}
+      />
     </>
   );
 }
