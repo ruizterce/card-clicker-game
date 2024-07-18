@@ -6,9 +6,20 @@
     height: auto;
     border-radius: 50%;
     overflow: hidden;
+    box-shadow: 3px 3px 3px hsl(0, 0%, 60%);
 
     img {
         width: 100%;
         height: auto;
     }
+}
+
+.game-card:hover {
+    box-shadow: none;
+    translate: 3px 3px
+}
+
+.game-card:active {
+    box-shadow: inset 3px 3px 3px hsl(0, 0%, 60%);
+    translate: 6px 6px
 }
