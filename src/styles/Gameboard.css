@@ -1,6 +1,7 @@
 .gameboard {
     display: flex;
     justify-content: center;
-    padding: 50px;
+    flex-wrap: wrap;
+    padding: 50px 25px;
     gap: 20px;
 }

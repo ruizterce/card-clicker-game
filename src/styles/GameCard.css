@@ -2,18 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
+    min-width: 96px;
     height: auto;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 3px 3px 3px hsl(0, 0%, 60%);
+    box-shadow: 3px 3px 3px #3c5aa6;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-
-    img {
-        width: 100%;
-        height: auto;
-    }
 }
 
 .game-card:hover {
@@ -22,7 +17,7 @@
 }
 
 .game-card:active {
-    box-shadow: inset 3px 3px 3px hsl(0, 0%, 60%);
+    box-shadow: inset 3px 3px 3px #3c5aa6;
     transform: translate(6px, 6px);
 }
 

@@ -25,15 +25,22 @@ function App() {
 
   return (
     <>
-      <Scoreboard score={score} gameOver={gameOver} />
-      {gameOver ? <button onClick={resetGame}>Play Again</button> : null}
-
-      <Gameboard
-        number="5"
-        onGameOver={handleGameOver}
-        onScoreChange={handleScoreChange}
-        gameOver={gameOver}
-      />
+      <h1>Pokémon Memory Game</h1>
+      <div className="game">
+        <Scoreboard score={score} gameOver={gameOver} />
+        <Gameboard
+          number="5"
+          onGameOver={handleGameOver}
+          onScoreChange={handleScoreChange}
+          gameOver={gameOver}
+        />
+        {gameOver && (
+          <button onClick={resetGame}>
+            <p>Play</p>
+            <p>Again</p>
+          </button>
+        )}
+      </div>
     </>
   );
 }

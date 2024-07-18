@@ -21,9 +21,9 @@ export default function Scoreboard({ score, gameOver }) {
   return (
     <div className="scoreboard">
       {gameOver ? (
-        <div>Game Over! You clicked twice on the same Pokemon.</div>
+        <div>Game Over! You clicked twice on the same Pokémon.</div>
       ) : (
-        <div>Click on each Pokemon only once!</div>
+        <div>Click on each Pokémon only once!</div>
       )}
       <div>
         Score: <span>{score}</span>

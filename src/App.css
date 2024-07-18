@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url('./assets/fonts/pokemon/Pokemon_Solid.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#root {
+    font-family: 'Pokemon';
+    font-size: 20px;
+    color: #ffcb05;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-shadow:
+        -4px -4px 0 #4a75bb,
+        4px -4px 0 #4a75bb,
+        -4px 4px 0 #4a75bb,
+        4px 4px 0 #4a75bb,
+        -4px 0 0 #4a75bb,
+        4px 0 0 #4a75bb,
+        0 -4px 0 #4a75bb,
+        0 4px 0 #4a75bb,
+        -6px 6px 6px #3c5aa6,
+        6px -6px 6px #3c5aa6;
+    background: linear-gradient(0deg, #4a75bb 20%, #ffffffd3 50%, #4a75bb 80%);
+    padding: 20px;
+}
+
+.scoreboard,
+button {
+    letter-spacing: 0.1em;
+    text-shadow:
+        -2px -2px 0 #2a75bb,
+        2px -2px 0 #2a75bb,
+        -2px 2px 0 #2a75bb,
+        2px 2px 0 #2a75bb,
+        -2px 0 0 #2a75bb,
+        2px 0 0 #2a75bb,
+        0 -2px 0 #2a75bb,
+        0 2px 0 #2a75bb,
+        -3px 3px 4px #3c5aa6;
+}
+
+.game {
+    background: radial-gradient(ellipse,
+            #fff 0%,
+            #4a75bb 70%);
+
+    button {
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+        width: 96px;
+        height: 96px;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 3px 3px 3px #3c5aa6;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 2px solid #0f0f0f;
+        background-image:
+            radial-gradient(white 20%, white 20%, #0f0f0f 20%, #0f0f0f 30%, transparent 30%, transparent), linear-gradient(red 46%, #0f0f0f 46%, #0f0f0f 54%, white 54%);
+    }
+
+    button:hover {
+        box-shadow: none;
+        transform: translate(3px, 3px);
+    }
+
+    button:active {
+        box-shadow: inset 3px 3px 3px #3c5aa6;
+        transform: translate(6px, 6px);
+    }
+
+    button>p {
+        margin: 0px;
+        font-family: 'Pokemon';
+        font-size: 1.8em;
+        letter-spacing: 0.1em;
+        line-height: 1.2em;
+        color: #ffcb05;
+        translate: 5%;
+    }
+}

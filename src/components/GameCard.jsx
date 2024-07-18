@@ -78,7 +78,6 @@ export default function GameCard({ id, onClick, clicked, gameOver }) {
 
   const borderStyle = gameOver && clicked ? "2px solid green" : "none";
 
-  console.log("clicked:" + clicked);
   return (
     <div
       className={`game-card ${gameOver ? "game-over" : ""}`}
