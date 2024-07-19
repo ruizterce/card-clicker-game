@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 import "../styles/Gameboard.css";
 
 export default function Gameboard({
-  number,
+  cardQty,
   onGameOver,
   onScoreChange,
   gameOver,
@@ -20,8 +20,8 @@ export default function Gameboard({
     return itemIdList;
   }
 
-  // Generate a random list of {number} 1st generation Pokemon IDs (1-151)
-  const [itemIdList, setItemIdList] = useState(generateIdList(number, 1, 151));
+  // Generate a random list of {cardQty} 1st generation Pokemon IDs (1-151)
+  const [itemIdList, setItemIdList] = useState(generateIdList(cardQty, 1, 151));
 
   // Shuffle itemIdList list order
   function shuffleList() {
@@ -47,10 +47,10 @@ export default function Gameboard({
   // Reset itemIdList and clickedCards when gameOver changes to false
   useEffect(() => {
     if (!gameOver) {
-      setItemIdList(generateIdList(number, 1, 151));
+      setItemIdList(generateIdList(cardQty, 1, 151));
       setClickedCards([]);
     }
-  }, [gameOver, number]);
+  }, [gameOver, cardQty]);
 
   return (
     <div className="gameboard">

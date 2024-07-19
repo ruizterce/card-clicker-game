@@ -6,6 +6,7 @@ import Scoreboard from "./components/Scoreboard";
 function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const cardQty = 15;
 
   // Handle game over
   function handleGameOver() {
@@ -30,9 +31,14 @@ function App() {
         <p> Memory Game</p>
       </div>
       <div className="game">
-        <Scoreboard score={score} gameOver={gameOver} />
+        <Scoreboard
+          cardQty={cardQty}
+          onGameOver={handleGameOver}
+          score={score}
+          gameOver={gameOver}
+        />
         <Gameboard
-          number="15"
+          cardQty={cardQty}
           onGameOver={handleGameOver}
           onScoreChange={handleScoreChange}
           gameOver={gameOver}

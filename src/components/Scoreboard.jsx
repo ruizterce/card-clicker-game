@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Scoreboard.css";
 
-export default function Scoreboard({ score, gameOver }) {
+export default function Scoreboard({ cardQty, onGameOver, score, gameOver }) {
   const [highScore, setHighScore] = useState(0);
 
   // Initialize high score from localStorage
@@ -18,11 +18,22 @@ export default function Scoreboard({ score, gameOver }) {
     }
   }, [gameOver, score, highScore]);
 
+  // End game if all cards have been clicked
+  useEffect(() => {
+    if (score === cardQty) {
+      onGameOver();
+    }
+  });
+
   return (
     <div className="scoreboard">
       <div className="text-container">
         {gameOver ? (
-          <div>Game Over! You clicked twice on the same Pokémon.</div>
+          score === cardQty ? (
+            <div>Congratulations! You clicked on every Pokémon!</div>
+          ) : (
+            <div>Game Over! You clicked twice on the same Pokémon.</div>
+          )
         ) : (
           <div>Click on each Pokémon only once!</div>
         )}
