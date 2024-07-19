@@ -25,6 +25,11 @@
     pointer-events: none;
 }
 
+.game-card.game-over.clicked {
+    box-shadow: inset 3px 3px 3px #3c5aa6;
+    transform: translate(6px, 6px);
+}
+
 .game-card.game-over:hover,
 .game-card.game-over:active {
     transform: none;

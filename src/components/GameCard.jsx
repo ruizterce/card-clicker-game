@@ -76,16 +76,15 @@ export default function GameCard({ id, onClick, clicked, gameOver }) {
     fairy: "#D685AD",
   };
 
-  const borderStyle = gameOver && clicked ? "2px solid green" : "none";
-
   return (
     <div
-      className={`game-card ${gameOver ? "game-over" : ""}`}
+      className={`game-card ${gameOver ? "game-over" : ""} ${
+        clicked ? "clicked" : ""
+      }`}
       onClick={onClick}
       style={{
         cursor: "pointer",
         backgroundColor: typeColours[pokemon.types[0].type.name],
-        border: borderStyle,
       }}
     >
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />

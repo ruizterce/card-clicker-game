@@ -20,17 +20,20 @@ export default function Scoreboard({ score, gameOver }) {
 
   return (
     <div className="scoreboard">
-      {gameOver ? (
-        <div>Game Over! You clicked twice on the same Pokémon.</div>
-      ) : (
-        <div>Click on each Pokémon only once!</div>
-      )}
-      <div>
-        Score: <span>{score}</span>
+      <div className="text-container">
+        {gameOver ? (
+          <div>Game Over! You clicked twice on the same Pokémon.</div>
+        ) : (
+          <div>Click on each Pokémon only once!</div>
+        )}
       </div>
-
-      <div>
-        High Score: <span>{highScore}</span>
+      <div className="score-container">
+        <div>
+          Score: <span>{score}</span>
+        </div>
+        <div>
+          High Score: <span>{highScore}</span>
+        </div>
       </div>
     </div>
   );

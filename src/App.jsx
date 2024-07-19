@@ -25,11 +25,14 @@ function App() {
 
   return (
     <>
-      <h1>Pokémon Memory Game</h1>
+      <div className="title-container">
+        <h1>Pokémon</h1>
+        <p> Memory Game</p>
+      </div>
       <div className="game">
         <Scoreboard score={score} gameOver={gameOver} />
         <Gameboard
-          number="5"
+          number="15"
           onGameOver={handleGameOver}
           onScoreChange={handleScoreChange}
           gameOver={gameOver}
