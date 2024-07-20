@@ -50,6 +50,11 @@ function App() {
           </button>
         )}
       </div>
+      <div className="credits">
+        <a href="https://github.com/ruizterce/card-clicker-game" target="blank">
+          Crafted with love @ruizterce
+        </a>
+      </div>
     </>
   );
 }
