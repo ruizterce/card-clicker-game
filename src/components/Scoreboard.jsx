@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Scoreboard.css";
 
-export default function Scoreboard({ cardQty, onGameOver, score, gameOver }) {
+export default function Scoreboard({
+  cardQty,
+  onGameOver,
+  score,
+  gameOver,
+  onHighScore,
+}) {
   const [highScore, setHighScore] = useState(0);
 
   // Initialize high score from localStorage
   useEffect(() => {
     const storedHighScore = parseInt(localStorage.getItem("highScore")) || 0;
     setHighScore(storedHighScore);
+    onHighScore(storedHighScore);
   }, []);
 
   // Update high score in localStorage when game is over
@@ -15,6 +22,7 @@ export default function Scoreboard({ cardQty, onGameOver, score, gameOver }) {
     if (gameOver && score > highScore) {
       setHighScore(score);
       localStorage.setItem("highScore", score);
+      onHighScore(score);
     }
   }, [gameOver, score, highScore]);
 
@@ -23,8 +31,14 @@ export default function Scoreboard({ cardQty, onGameOver, score, gameOver }) {
     if (score === cardQty) {
       onGameOver();
     }
-  });
+  }, [score]);
 
+  // Reset high score
+  function resetHighScore() {
+    setHighScore(0);
+    localStorage.setItem("highScore", 0);
+    onHighScore(0);
+  }
   return (
     <div className="scoreboard">
       <div className="text-container">
@@ -40,11 +54,15 @@ export default function Scoreboard({ cardQty, onGameOver, score, gameOver }) {
       </div>
       <div className="score-container">
         <div>
-          Score: <span>{score}</span>
+          <span>Score: {score}</span>
         </div>
         <div>
-          High Score: <span>{highScore}</span>
+          <span>High Score: {highScore}</span>
         </div>
+        <button className="reset-high-score-btn" onClick={resetHighScore}>
+          {" "}
+          Reset
+        </button>
       </div>
     </div>
   );

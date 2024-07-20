@@ -33,4 +33,5 @@
 .game-card.game-over:hover,
 .game-card.game-over:active {
     transform: none;
+
 }

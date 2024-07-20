@@ -71,6 +71,7 @@ p {
     box-shadow: 3px 3px 3px hsl(0, 0%, 50%);
 
     .scoreboard {
+        font-size: 0.8em;
         letter-spacing: 0.1em;
         text-shadow:
             -2px -2px 0 #2a75bb,
@@ -85,20 +86,10 @@ p {
     }
 
     button {
-        position: absolute;
-        left: 50%;
-        translate: -50% -40%;
-        width: 96px;
-        height: 96px;
-        border: none;
-        border-radius: 50%;
         box-shadow: 3px 3px 3px #3c5aa6;
+        border: none;
         cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
-        border: 2px solid #0f0f0f;
-        background-image:
-            radial-gradient(white 20%, white 20%, #0f0f0f 20%, #0f0f0f 30%, transparent 30%, transparent), linear-gradient(red 46%, #0f0f0f 46%, #0f0f0f 54%, white 54%);
-
     }
 
     button:hover {
@@ -111,7 +102,20 @@ p {
         transform: translate(6px, 6px);
     }
 
-    button>p {
+    .play-again-btn {
+        position: absolute;
+        left: 50%;
+        translate: -50% -40%;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        border: 2px solid #0f0f0f;
+        background-image:
+            radial-gradient(white 20%, white 20%, #0f0f0f 20%, #0f0f0f 30%, transparent 30%, transparent), linear-gradient(red 46%, #0f0f0f 46%, #0f0f0f 54%, white 54%);
+
+    }
+
+    .play-again-btn>p {
         margin: 0px;
         font-family: 'Pokemon';
         font-size: 2.1em;
@@ -125,6 +129,13 @@ p {
 }
 
 .credits {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.credits>* {
+    border: none;
     margin-bottom: 20px;
     text-align: center;
     letter-spacing: 0.1em;
@@ -135,16 +146,18 @@ p {
     border-radius: 15px;
     font-family: sans-serif;
     font-size: 0.6em;
+    cursor: pointer;
 
-    a {
-        color: inherit;
-        text-decoration: none;
-        text-shadow: 2px 2px 2px #3c5aa6;
-    }
 }
 
-.credits:hover {
+.credits>*:hover {
     box-shadow: none;
     transform: translate(3px, 3px);
     transition: transform 0.2s, box-shadow 0.2s;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px #3c5aa6;
 }
