@@ -7,6 +7,7 @@ export default function Scoreboard({
   score,
   gameOver,
   onHighScore,
+  onScoreChange,
 }) {
   const [highScore, setHighScore] = useState(0);
 
@@ -38,7 +39,9 @@ export default function Scoreboard({
     setHighScore(0);
     localStorage.setItem("highScore", 0);
     onHighScore(0);
+    onScoreChange(0);
   }
+
   return (
     <div className="scoreboard">
       <div className="text-container">

@@ -46,6 +46,7 @@ function App() {
           score={score}
           gameOver={gameOver}
           onHighScore={handleHighScore}
+          onScoreChange={handleScoreChange}
         />
         <Gameboard
           cardQty={cardQty}
