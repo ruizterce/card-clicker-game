@@ -79,7 +79,7 @@ export default function GameCard({ id, onClick, clicked, gameOver }) {
   return (
     <div
       className={`game-card ${gameOver ? "game-over" : ""} ${
-        clicked ? "clicked" : ""
+        clicked ? "clicked" : "unclicked"
       }`}
       onClick={onClick}
       style={{

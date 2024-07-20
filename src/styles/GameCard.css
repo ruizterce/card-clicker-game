@@ -30,6 +30,10 @@
     transform: translate(6px, 6px);
 }
 
+.game-card.game-over.unclicked {
+    filter: grayscale(100%)
+}
+
 .game-card.game-over:hover,
 .game-card.game-over:active {
     transform: none;
