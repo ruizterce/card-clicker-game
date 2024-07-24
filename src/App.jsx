@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Gameboard from "./components/Gameboard";
 import Scoreboard from "./components/Scoreboard";
@@ -32,6 +32,11 @@ function App() {
     setGameOver(false);
     setIsHighScore(false);
   }
+
+  // Avoid isHighScore = true state on initialization
+  useEffect(() => {
+    setIsHighScore(false);
+  }, []);
 
   return (
     <>
